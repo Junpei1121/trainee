@@ -1,0 +1,52 @@
+<div class='container'>
+  <div class='row'>
+     <div class='col-md-8 offset-md-1 my-3'>
+       <h5>投稿詳細</h5>
+       <% if flash[:post_update] %>
+         <div class="alert alert-success my-3">
+           <%= flash[:post_update] %>
+       <% end %>
+      </div>
+        <table class='table table-hover table-inverse'>
+          <tbody>
+              <tr>
+                <td width='120'><%= link_to(@post.user) do %>
+                  <%= image_tag @post.user.get_profile_image(100,100) %>
+                  <% end %>
+                </td>
+                <td > <%= @post.user.name %></td>
+              </tr>
+              <tr>
+                <td style="border-top: none;"></td>
+                <td style="border-top: none;"><%= @post.body %></td>
+              </tr>
+              <tr>
+                <td align="right" id="favorite_buttons_<%= @post.id %>"　>
+                  <%= render "public/post_favorites/post_favorite", post: @post %>
+                </td>
+                <td id='comment_counter'>
+                  <%= render 'public/comments/counter', post: @post %>
+                </td>
+              </tr>
+               <% if @post.user == current_user %>
+              <tr>
+                <td></td>
+                <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success mr-3" %>
+                <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger ml-3"%></td>
+              </tr>
+              <%end%>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-8 offset-md-1 my-3' id='comment_form'>
+      <%= render 'public/comments/form', post: @post,comment: @comment %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-8 offset-md-1 my-3' id='comment_index'>
+      <%= render 'public/comments/index', post: @post %>
+    </div>
+  </div>
+</div>

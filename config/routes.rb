@@ -33,17 +33,16 @@ scope module: :public do
       get :follows, :followers
     end
     resource :relationships, only: [:create, :destroy]
-  end
-
-  end
+    end
     resources :posts, only: [:new, :create, :index, :edit, :update, :destroy, :show] do
-      resource :favorite, only: [:create, :destroy]
+      resource :post_favorite, only: [:create, :destroy]
       resources :comments, only: [:create,:destroy]
       collection do
           get :search_tag
       end
-
+    end
 
   end
+    
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
