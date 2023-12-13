@@ -5,19 +5,25 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+    @tag_list = @post.tags.pluck(:name).join(',')
+    @post_tags = @post.tags
   end
   
   def index
     @posts = Post.all
+    @tag_list = Tag.all
   end
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   def update
     @post = Post.find(params[:id])
+    @tag_list=params[:post][:name].split(',')
     if @post.update(post_params)
+      @post.save_tags(@tag_list)
       flash[:post_update] = "投稿更新に成功しました"
       redirect_to post_path(@post)
     else
@@ -39,7 +45,9 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @user = current_user
+    @tag_list = params[:post][:name].split(',')
     if @post.save
+      @post.save_tags(@tag_list)
       flash[:post_create] = "投稿に成功しました"
       redirect_to user_path(@user)
     else
@@ -50,6 +58,9 @@ class Public::PostsController < ApplicationController
   
 
   def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts
   end
 
   private

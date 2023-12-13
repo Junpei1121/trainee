@@ -1,0 +1,106 @@
+<div class='container'>
+  <div class='row'>
+     <div class='col-md-8 offset-md-1 my-3'>
+      <% if @range == "ユーザー" %>
+          <h5>「<%= @word %>」が含まれるユーザー検索結果（全<%= User.looks(params[:search], params[:word]).count %>名）</h5>
+          <table class='table'>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td>
+                    <%= link_to user_path(user) do %>
+                    <%= image_tag user.get_profile_image(50,50) %>
+                    <% end %>
+                  </td>
+                  <td><%= link_to user.name, user_path(user) %></td>
+                  <td><%= user.introduction %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <!--ページネーション-->
+        <%#= paginate @customers %>
+
+      <% elsif  @range == "投稿"%>
+        <!--検索対象モデルが会員ではない時(= 商品（Item）の時) -->
+        <h5>投稿に「<%= @word %>」が含まれる検索結果（全<%= Post.looks(params[:search], params[:word]).count %>件）</h5>
+        <table class='table table-hover table-inverse'>
+          <tbody>
+            <% @posts.each do |post| %>
+              <tr>
+                <td width='70'><%= link_to(post.user) do %>
+                  <%= image_tag post.user.get_profile_image(50,50) %>
+                  <% end %>
+                  </td>
+                  <td>
+                    <%= link_to(post.user.name, user_path(post.user)) %>
+                  </td>
+              </tr>
+              <tr>
+                <td style="border-top: none;"></td>
+                <td style="border-top: none;">
+                  <%= link_to(post_path(post)) do %>
+                    <%= post.body %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td align="right" id="favorite_buttons_<%= post.id %>">
+                  <%= render "public/post_favorites/post_favorite", post: post %>
+                </td>
+                <td id='comment_counter'>
+                  <%= render 'public/comments/counter', post: post %>
+                  <% post.tags.each do |tag|%>
+                    <i class="fa-solid fa-tag"></i><%=link_to tag.name,search_tag_posts_path(tag_id: tag.id) %>
+                  <% end %>
+                  <%= post.created_at.strftime('%Y/%m/%d/%R') %>
+                </td>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+        <!--ページネーション-->
+        <%#= paginate @items %>
+      <% else %>
+        <h5>タグに「<%= @word %>」が含まれる検索結果（全<%= @posts.count %>件）</h5>
+        <table class='table table-hover table-inverse'>
+          <tbody>
+            <% @tags.each do |tag|%>
+              <% tag.posts.each do |post| %>
+                <tr>
+                  <td width='70'><%= link_to(post.user) do %>
+                    <%= image_tag post.user.get_profile_image(50,50) %>
+                    <% end %>
+                    </td>
+                    <td>
+                      <%= link_to(post.user.name, user_path(post.user)) %>
+                    </td>
+                </tr>
+                <tr>
+                  <td style="border-top: none;"></td>
+                  <td style="border-top: none;">
+                    <%= link_to(post_path(post)) do %>
+                      <%= post.body %>
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="right" id="favorite_buttons_<%= post.id %>">
+                    <%= render "public/post_favorites/post_favorite", post: post %>
+                  </td>
+                  <td id='comment_counter'>
+                    <%= render 'public/comments/counter', post: post %>
+                    <% post.tags.each do |tag|%>
+                      <i class="fa-solid fa-tag"></i><%=link_to tag.name,search_tag_posts_path(tag_id: tag.id) %>
+                    <% end %>
+                    <%= post.created_at.strftime('%Y/%m/%d/%R') %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+     </div>
+  </div>
+</div>
