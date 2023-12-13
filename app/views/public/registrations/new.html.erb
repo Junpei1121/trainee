@@ -2,15 +2,14 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto my-5">
       <h2>新規登録</h2>
-
-      <%= form_with(model: resource, scope: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
-
+      <!--退会した会員がログインしようとしたときのアラートメッセージ-->
         <% if flash[:withdraw] %>
           <div class="alert alert-danger">
             <%= flash[:withdraw] %>
           </div>
        <% end %>
+      <%= form_with(model: resource, scope: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
 
         <div class="field">
           <%= f.label :ユーザー名 %><br />

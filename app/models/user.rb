@@ -33,6 +33,19 @@ class User < ApplicationRecord
       @user = User.where("name LIKE?", "%#{word}%")
     end
   end
+  # ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないようにする
+  def active_for_authentication?
+    super && (is_active == true)
+  end
+  #ゲストログイン
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
   
   # プロフィール写真を追加したらその画像を使用し、追加されなかったらデフォルトの画像
   def get_profile_image(width, height)

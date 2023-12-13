@@ -9,8 +9,6 @@ class SearchesController < ApplicationController
       @posts = Post.looks(params[:search], params[:word])
     else
       @tags = Tag.looks(params[:search], params[:word])
-      # @posts = Post.looks(params[:search], params[:word]).select { |post| post.is_a?(Post) }
-      # @posts = Post.looks(params[:search], params[:word]).select { |post| post.is_a?(Post) && post.tags.exists?(name: @word) }
       @posts = @tags.flat_map { |tag| tag.posts.distinct }
     end
   end

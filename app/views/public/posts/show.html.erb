@@ -32,7 +32,7 @@
                   <%= @post.created_at.strftime('%Y/%m/%d/%R') %>
                 </td>
               </tr>
-               <% if @post.user == current_user %>
+               <% if @post.user == current_user%>
               <tr>
                 <td></td>
                 <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success mr-3" %>
