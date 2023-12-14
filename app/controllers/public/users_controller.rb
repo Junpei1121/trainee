@@ -23,7 +23,8 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    users = User.where(is_active: true).where.not(email: "guest@example.com")
+    @users = users
   end
 
   def withdraw_confirm
@@ -56,7 +57,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
+    params.require(:user).permit(:name, :introduction, :profile_image, :is_active)
   end
 
   def ensure_correct_user
@@ -69,7 +70,8 @@ class Public::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.email == "guest@example.com"
-      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      flash[:guest_edit] = "ゲストユーザーはプロフィール編集画面へ遷移できません"
+      redirect_to user_path(current_user)
     end
   end  
   

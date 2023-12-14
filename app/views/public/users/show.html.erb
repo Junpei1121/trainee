@@ -12,8 +12,13 @@
           <%= flash[:post_create] %>
         </div>
       <% end %>
-      <% if flash[:notice] %>
+      <% if flash[:guest_edit] %>
         <div class="alert alert-danger my-3">
+          <%= flash[:guest_edit] %>
+        </div>
+      <% end %>
+      <% if flash[:notice] %>
+        <div class="alert alert-success my-3">
           <%= flash[:notice] %>
         </div>
       <% end %>

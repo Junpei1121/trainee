@@ -1,0 +1,41 @@
+<div class='container'>
+  <div class='row'>
+     <div class='col-md-8 offset-md-1 my-3 mx-auto'>
+       <h5><%= @user.name %>さんの編集画面</h5>
+       <% if @user.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <% @user.errors.full_messages.each do |message| %>
+            <p><%= message %></p>
+          <% end %>
+        </div>
+      <% end %>
+      <!--会員情報編集フォーム-->
+      <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
+        <table>
+          <tbody>
+            <tr>
+              <td class="p-1">氏名</td>
+              <td class="p-1"><%= f.text_field :name %></td>
+            </tr>
+            <tr>
+              <td class="p-1">メールアドレス</td>
+              <td class="p-1"><%= f.text_field :email %></td>
+            </tr>
+            <tr>
+              <td class="p-1">会員ステータス</td>
+              <td class="p-1">
+                <%= f.radio_button :is_active, true %>
+    　           <%= f.label :is_active_true, "有効" %>
+    　           <%= f.radio_button :is_active, false %>
+    　           <%= f.label :is_active_false,"退会" %>
+  　          </td>
+            </tr>
+            <tr>
+              <td class="p-2"><%= f.submit "変更を保存", class:"btn btn-success" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+     </div>
+  </div>
+</div>

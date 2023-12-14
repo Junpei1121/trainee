@@ -24,11 +24,13 @@
               <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light btn btn-outline-light' %>
             </li>
           <% elsif user_signed_in? %>
+            <% unless guest_user? %>
             <li class="nav-item mx-3">
               <%= link_to new_post_path do %>
               <i class="fa-solid fa-circle-plus"></i>
               <% end %>
             </li>
+            <% end %>
             <li class="nav-item mx-3">
               <%= link_to 'マイページ', user_path(current_user), class: "nav-link text-light btn btn-outline-light" %>
             </li>

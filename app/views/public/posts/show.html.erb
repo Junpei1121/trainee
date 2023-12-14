@@ -21,9 +21,11 @@
                 <td style="border-top: none;"><%= @post.body %></td>
               </tr>
               <tr>
+                <% if current_user.email != "guest@example.com" %>
                 <td align="right" id="favorite_buttons_<%= @post.id %>"　>
                   <%= render "public/post_favorites/post_favorite", post: @post %>
                 </td>
+                <% end %>
                 <td id='comment_counter'>
                   <%= render 'public/comments/counter', post: @post %>
                   <% @post_tags.each do |tag| %>
@@ -43,11 +45,13 @@
         </table>
       </div>
   </div>
+  <% if current_user.email != "guest@example.com" %>
   <div class='row'>
     <div class='col-md-8 offset-md-1 my-3' id='comment_form'>
       <%= render 'public/comments/form', post: @post,comment: @comment %>
     </div>
   </div>
+  <% end %>
   <div class='row'>
     <div class='col-md-8 offset-md-1 my-3' id='comment_index'>
       <%= render 'public/comments/index', post: @post %>

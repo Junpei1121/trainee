@@ -21,11 +21,15 @@
         </td>
       </tr>
       <tr>
-        <td align="right" id="favorite_buttons_<%= post.id %>">
+        <td align="right" id="favorite_buttons_<%= post.id %>"　style="border-top: none;">
+          <% unless current_user.email == "guest@example.com" %>
           <%= render "public/post_favorites/post_favorite", post: post %>
+          <% end %>
         </td>
-        <td id='comment_counter'>
-          <%= render 'public/comments/counter', post: post %>
+        <td id='comment_counter' style="border-top: none;">
+          
+            <%= render 'public/comments/counter', post: post %>
+          
           <% post.tags.each do |tag|%>
             <i class="fa-solid fa-tag"></i><%=link_to tag.name,search_tag_posts_path(tag_id: tag.id) %>
           <% end %>
