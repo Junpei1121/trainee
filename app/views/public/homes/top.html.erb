@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+       <% if flash[:withdraw] %>
+        <div class="alert alert-success my-3">
+          <%= flash[:withdraw] %>
+        </div>
+        <% end %>
+      <%= image_tag 'nagano_cake_logo.png', size: '300x300' %>
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to '新規登録',new_user_registration_path, class: "btn btn-success btn-sm btn-block mb-3 sign_up" %>
+        </div>
+        <div class="row">
+          <%= link_to 'ログイン',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+        <div class="row">
+          <%= link_to 'ゲストログイン(閲覧用)',users_guest_sign_in_path,method: :post, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

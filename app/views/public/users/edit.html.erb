@@ -1,0 +1,35 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+       <!--ユーザー情報更新失敗時のアラートメッセージ-->
+      <% if @user.errors.any? %>
+        <div class="alert alert-danger my-3" role="alert">
+          <% @user.errors.full_messages.each do |message| %>
+            <p><%= message %></p>
+          <% end %>
+        </div>
+      <% end %>
+      
+      <h5 class="my-3">ユーザー編集</h5>
+      <%= form_with model: @user, local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :ユーザー画像 %>
+          <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :ユーザー名 %>
+          <%= f.text_field :name, class: "form-control name" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :自己紹介 %>
+          <%= f.text_area :introduction, class: "form-control introduction" %>
+        </div>
+        <div class="form-group my-3">
+          <%= f.submit '更新',class: 'btn btn-info' %>
+          <%= link_to "退会する", withdraw_confirm_users_path, class: "btn btn-danger ml-5" %>
+        </div>
+        
+    <% end %>
+    </div>
+  </div>
+</div>

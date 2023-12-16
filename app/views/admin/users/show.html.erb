@@ -1,0 +1,27 @@
+<div class='container'>
+  <div class='row'>
+     <div class='col-md-3 my-3'>
+       <h5><%= @user.name%>さんの詳細ページ</h5>
+       <%= image_tag @user.get_profile_image(200,200) %>
+     </div>
+     <div class='col-md-2 my-5'>
+       <p>会員ID</p>
+       <p>ユーザー名</p>
+       <p>メールアドレス</p>
+       <p>フォロー数</p>
+       <p>フォロワー数</p>
+       <p>ステータス</p>
+     </div>
+     <div class='col-md-4 my-5'>
+       <p><%= @user.id %></p>
+       <p><%= @user.name %></p>
+       <p><%= @user.email %></p>
+       <p><%= @user.following_users.count %></p>
+       <p><%= @user.follower_users.count %></p>
+       <p class="<%= @user.is_active ? 'text-success' : 'text-muted' %>"><%= @user.is_active ? '有効' : '退会' %></p>
+     </div>
+     <div class='col-md-2 my-5'>
+       <%= link_to "編集する ", edit_admin_user_path(@user), class: "btn btn-success d-flex align-items-end" %>
+     </div>
+  </div>
+</div>

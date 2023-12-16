@@ -1,0 +1,20 @@
+<div class='container px-5 px-sm-0 py-3'>
+  <div class='row'>
+    <div class='col-md text-center'>
+      <h3>本当に退会しますか？</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md text-center p-2">
+      <h5>退会すると、ユーザー登録情報や</h5>
+      <h5>投稿すること、これまでの投稿履歴が閲覧できなくなります。</h5>
+      <h5>退会する場合は、「退会する」をクリックしてください。</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md text-center p-2">
+      <%= link_to "退会しない", user_path(current_user), class:"btn btn-primary" %>
+      <%= link_to "退会する", withdraw_users_path, method: :patch, data: { confirm: "本当に退会しますか？" }, class:"btn btn-danger" %>
+    </div>
+  </div>
+</div>

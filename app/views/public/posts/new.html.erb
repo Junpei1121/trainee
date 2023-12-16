@@ -1,0 +1,15 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-8 my-3 mx-auto'>
+      <h5>新規投稿</h5>
+      <% if @post.errors.any? %>
+        <div class="alert alert-danger my-3" role="alert">
+          <% @post.errors.full_messages.each do |message| %>
+            <p><%= message %></p>
+          <% end %>
+        </div>
+      <% end %>
+     <%= render 'public/posts/form', post: @post %>
+    </div>
+  </div>
+</div>
