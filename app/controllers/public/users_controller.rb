@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).per(10)
   end
 
   def edit
@@ -24,7 +24,7 @@ class Public::UsersController < ApplicationController
 
   def index
     users = User.where(is_active: true).where.not(email: "guest@example.com")
-    @users = users
+    @users = users.page(params[:page]).per(10)
   end
 
   def withdraw_confirm
@@ -40,18 +40,18 @@ class Public::UsersController < ApplicationController
   def favorites 
     @user = User.find(params[:id])
     post_favorites = PostFavorite.where(user_id: @user.id).pluck(:post_id)
-    @post_favorite_posts = Post.find(post_favorites)
+    @post_favorite_posts = Post.find(post_favorites).page(params[:page]).per(10)
     # @posts = Post.find(params[:id])
   end
   
   def follows
     @user = User.find(params[:id])
-    @users = @user.following_users
+    @users = @user.following_users.page(params[:page]).per(10)
   end
 
   def followers
     @user = User.find(params[:id])
-    @users = @user.follower_users
+    @users = @user.follower_users.page(params[:page]).per(10)
   end
   
   private

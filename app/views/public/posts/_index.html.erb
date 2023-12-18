@@ -15,21 +15,27 @@
       <tr>
         <td style="border-top: none;"></td>
         <td style="border-top: none;">
-          <%= link_to(post_path(post)) do %>
-            <%= post.body %>
-          <% end %>
+            <% image = post.get_image(100, 100) %>
+              <% if image.present? %>
+                <%= image_tag image %><br>
+                <%= link_to(post_path(post)) do %>
+                  <%= post.body %>
+                <% end %>
+              <% else %>
+                <%= link_to(post_path(post)) do %>
+                  <%= post.body %>
+                <% end %>
+              <% end %>
         </td>
       </tr>
       <tr>
-        <td align="right" id="favorite_buttons_<%= post.id %>"　style="border-top: none;">
+        <td align="right" style="border-top: none;" id="favorite_buttons_<%= post.id %>"　>
           <% unless current_user.email == "guest@example.com" %>
           <%= render "public/post_favorites/post_favorite", post: post %>
           <% end %>
         </td>
         <td id='comment_counter' style="border-top: none;">
-          
             <%= render 'public/comments/counter', post: post %>
-          
           <% post.tags.each do |tag|%>
             <i class="fa-solid fa-tag"></i><%=link_to tag.name,search_tag_posts_path(tag_id: tag.id) %>
           <% end %>
@@ -39,3 +45,4 @@
       <% end %>
   </tbody>
 </table>
+<%= paginate posts %>

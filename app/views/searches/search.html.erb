@@ -18,11 +18,9 @@
               <% end %>
             </tbody>
           </table>
-        <!--ページネーション-->
-        <%#= paginate @customers %>
+        <%= paginate @users %>
 
       <% elsif  @range == "投稿"%>
-        <!--検索対象モデルが会員ではない時(= 商品（Item）の時) -->
         <h5>投稿に「<%= @word %>」が含まれる検索結果（全<%= Post.looks(params[:search], params[:word]).count %>件）</h5>
         <table class='table table-hover table-inverse'>
           <tbody>
@@ -59,8 +57,7 @@
               <% end %>
           </tbody>
         </table>
-        <!--ページネーション-->
-        <%#= paginate @items %>
+        <%= paginate @posts %>
       <% else %>
         <h5>タグに「<%= @word %>」が含まれる検索結果（全<%= @posts.count %>件）</h5>
         <table class='table table-hover table-inverse'>
@@ -100,6 +97,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= paginate @tags %>
       <% end %>
      </div>
   </div>

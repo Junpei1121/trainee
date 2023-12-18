@@ -10,15 +10,32 @@
         <table class='table table-hover table-inverse'>
           <tbody>
               <tr>
-                <td width='120'><%= link_to(@post.user) do %>
-                  <%= image_tag @post.user.get_profile_image(100,100) %>
+                <td width='120'>
+                  <%= link_to(@post.user) do %>
+                    <%= image_tag @post.user.get_profile_image(100,100) %>
                   <% end %>
                 </td>
-                <td > <%= @post.user.name %></td>
+                <td>
+                  <%= link_to(@post.user) do %>
+                    <%= @post.user.name %>
+                  <% end %>
+                </td>
               </tr>
               <tr>
                 <td style="border-top: none;"></td>
-                <td style="border-top: none;"><%= @post.body %></td>
+                <td style="border-top: none;">
+                  <% image = @post.get_image(200, 200) %>
+                    <% if image.present? %>
+                      <%= image_tag image %><br>
+                      <%= link_to(post_path(@post)) do %>
+                        <%= @post.body %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to(post_path(@post)) do %>
+                        <%= @post.body %>
+                      <% end %>
+                    <% end %>
+                </td>
               </tr>
               <tr>
                 <% if current_user.email != "guest@example.com" %>

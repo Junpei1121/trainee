@@ -19,6 +19,15 @@
     <div class="main" style="margin-bottom: 100px; margin-top: 100px;">
       <%= yield %>
     </div>
+    <% if user_signed_in? %>
+      <% unless guest_user? %>
+        <div class="new_post_mark">
+          <%= link_to new_post_path do %>
+            <i class="fa-solid fa-circle-plus fa-5x"></i>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
     <%= render 'layouts/footer' %>
   </body>
 </html>
