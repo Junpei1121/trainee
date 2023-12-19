@@ -54,8 +54,8 @@
                <% if @post.user == current_user%>
               <tr>
                 <td></td>
-                <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success mr-3" %>
-                <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger ml-3"%></td>
+                <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success mr-3 text-white" %>
+                <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger ml-3 text-white"%></td>
               </tr>
               <%end%>
           </tbody>

@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(10)
+    @posts = @user.posts.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def edit
@@ -40,8 +40,8 @@ class Public::UsersController < ApplicationController
   def favorites 
     @user = User.find(params[:id])
     post_favorites = PostFavorite.where(user_id: @user.id).pluck(:post_id)
-    @post_favorite_posts = Post.find(post_favorites).page(params[:page]).per(10)
-    # @posts = Post.find(params[:id])
+    @post_favorite_posts = Post.find(post_favorites)
+    @post_favorite_posts = Kaminari.paginate_array(@post_favorite_posts).page(params[:page]).per(10)
   end
   
   def follows

@@ -60,7 +60,7 @@ class Public::PostsController < ApplicationController
   def search_tag
     @tag_list = Tag.page(params[:page]).per(10)
     @tag = Tag.find(params[:tag_id])
-    @posts = @tag.posts
+    @posts = @tag.posts.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   private

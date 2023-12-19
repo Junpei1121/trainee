@@ -26,7 +26,6 @@ namespace :admin do
 #ユーザー
 scope module: :public do
     root to: 'homes#top'
-    get 'about' => 'homes#about', as: 'about'
     resources :users, only: [:index, :edit, :update, :show] do
     collection do
       get :withdraw_confirm
