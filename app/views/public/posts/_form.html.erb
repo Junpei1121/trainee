@@ -7,9 +7,13 @@
     <%= f.label :投稿 %>
     <%= f.text_area :body, class: 'form-control post_body' %>
   </div>
+  <div class="time">
+    <%= f.label :筋トレtime %>
+    <%= f.datetime_select :start_time %>
+  </div>
   <div class="form-group">
     <%= f.label :"タグ（,で区切ると複数タグ登録できます）" %>
-    <%= f.text_field :name, value: @tag_list, class: 'form-control tag_name' %>
+    <%= f.text_field :name, value: @tag_list,placeholder:'Workout', class: 'form-control tag_name' %>
   </div>
   <div class="form-group">
     <% if f.object.new_record? %>
@@ -19,4 +23,3 @@
     <% end %>
   </div>
 <% end %>
-       

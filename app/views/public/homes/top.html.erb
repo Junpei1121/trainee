@@ -19,13 +19,14 @@
           <div class="swiper-slide">
              <%= image_tag 'weight-lifting-man.jpg',class:"top" %>
              <p class="top-content">
-               皆さんで高め合いましょう
+               タグ付け機能でタグをWorkoutとするとマイページのカレンダーにダンベルのマークが記録される。<br>
+               自分がどれだけ筋トレしたかが一目でわかる！
              </p>
           </div>
           <div class="swiper-slide">
              <%= image_tag 'woman-lifts-free-weights.jpg',class:"top" %>
              <p class="top-content">
-               良い方法を共有し合いましょう
+               その日に投稿し忘れても筋トレtimeに筋トレをした日を入力すればカレンダーに反映
              </p>
           </div>
           <div class="swiper-slide">
@@ -41,7 +42,6 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
       </div>
-      <%#= image_tag 'one-arm-push-up.jpg', size: '600x300' %>
       <div class="btn-wrapper col-10 mx-auto">
         <div class="row mt-3">
           <%= link_to '新規登録',new_user_registration_path, class: "btn btn-success btn-sm btn-block mb-3 sign_up text-white" %>

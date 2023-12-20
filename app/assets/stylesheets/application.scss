@@ -10,9 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
+ 
 
 
 
@@ -53,7 +55,7 @@ ul.pagination {
 }
 
 body {
-  background-color :#CCCCCC !important;
+  background-color :#d4d9df !important;
 }
 
 .swiper-slide img {
@@ -84,3 +86,25 @@ body {
   font-size: 20px;
 }
 
+.simple-calendar {
+ .day {}
+ .wday-0 {}
+ .wday-1 {}
+ .wday-2 {}
+ .wday-3 {}
+ .wday-4 {}
+ .wday-5 {}
+ .wday-6 {}
+ .past {}
+ .future {}
+ .start-date {}
+ .prev-month {}
+ .next-month { }
+ .current-month {}
+ .has-events {
+   background: #98fb98;
+ }
+ .today {
+   background-color: #fff799;
+ }
+}

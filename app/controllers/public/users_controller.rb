@@ -6,6 +6,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).per(10).order(created_at: :desc)
+    @workout_posts = @posts.joins(:tags).where(tags: { name: 'Workout' }).page(params[:page]).per(10)
   end
 
   def edit
