@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2023_12_21_063317) do
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -77,6 +79,8 @@ ActiveRecord::Schema.define(version: 2023_12_21_063317) do
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_favorites_on_post_id"
+    t.index ["user_id"], name: "index_post_favorites_on_user_id"
   end
 
   create_table "post_tags", force: :cascade do |t|
@@ -95,6 +99,7 @@ ActiveRecord::Schema.define(version: 2023_12_21_063317) do
     t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -128,7 +133,12 @@ ActiveRecord::Schema.define(version: 2023_12_21_063317) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "notifications", "users"
+  add_foreign_key "post_favorites", "posts"
+  add_foreign_key "post_favorites", "users"
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
+  add_foreign_key "posts", "users"
 end

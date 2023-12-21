@@ -41,8 +41,7 @@ class Public::UsersController < ApplicationController
   def favorites 
     @user = User.find(params[:id])
     post_favorites = PostFavorite.where(user_id: @user.id).pluck(:post_id)
-    @post_favorite_posts = Post.find(post_favorites)
-    @post_favorite_posts = Kaminari.paginate_array(@post_favorite_posts).page(params[:page]).per(10)
+    @post_favorite_posts = Post.where(id: post_favorites).order(created_at: :desc).page(params[:page]).per(10)
   end
   
   def follows
