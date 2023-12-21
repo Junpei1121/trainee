@@ -5,6 +5,9 @@ class Post < ApplicationRecord
   has_many :post_favorites, dependent: :destroy
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
+  #通知機能に関する記述
+  has_one :notification, as: :subject, dependent: :destroy
+  
   validates :body, length: { minimum: 2, maximum: 300 },  presence: true
   
   # 画像を投稿に追加できるし、ない場合はそのまま投稿できる

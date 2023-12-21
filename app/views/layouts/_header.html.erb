@@ -36,6 +36,18 @@
             <li class="nav-item mx-3">
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark btn btn-outline-light' %>
             </li>
+            <% if current_user.email != "guest@example.com" %>
+            <li class="nav-item">
+              <%= link_to notifications_path, class: "nav-link" do %>
+                <% if current_user.notifications.where(checked: false).exists? %>
+                  <i class="fa-solid fa-bell" style="color: #ffdc00;"></i>
+                <% else %>
+                  <i class="fa-solid fa-bell"></i>
+                <% end %>
+                通知一覧
+              <% end %>
+            </li>
+            <% end %>
           <% else %>
           <% end %>
         </ul>

@@ -44,7 +44,7 @@ scope module: :public do
           get :search_tag
       end
     end
-
+    resources :notifications, only: [:index, :destroy]
   end
     
   end
