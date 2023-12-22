@@ -3,6 +3,8 @@ class Comment < ApplicationRecord
   belongs_to :post
 
   has_one :notification, as: :subject, dependent: :destroy
+  
+  validates :comment, length: { minimum: 3, maximum: 100 },  presence: true
 
   after_create_commit :create_notifications
 

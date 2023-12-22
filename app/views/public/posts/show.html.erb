@@ -6,6 +6,13 @@
          <div class="alert alert-success my-3">
            <%= flash[:post_update] %>
        <% end %>
+       <% if @comment.errors.any? %>
+        <div class="alert alert-danger my-3" role="alert">
+          <% @comment.errors.full_messages.each do |message| %>
+            <p><%= message.gsub("Comment", "コメント") %></p>
+          <% end %>
+        </div>
+      <% end %>
       </div>
         <table class='table table-hover table-inverse'>
           <tbody>
@@ -38,11 +45,11 @@
                 </td>
               </tr>
               <tr>
-                <% if current_user.email != "guest@example.com" %>
                 <td align="right" id="favorite_buttons_<%= @post.id %>"　>
-                  <%= render "public/post_favorites/post_favorite", post: @post %>
+                  <% unless current_user.email == "guest@example.com" %>
+                    <%= render "public/post_favorites/post_favorite", post: @post %>
+                  <% end %>
                 </td>
-                <% end %>
                 <td id='comment_counter'>
                   <%= render 'public/comments/counter', post: @post %>
                   <% @post_tags.each do |tag| %>

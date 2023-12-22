@@ -44,7 +44,9 @@
               </tr>
               <tr>
                 <td align="right" id="favorite_buttons_<%= post.id %>">
-                  <%= render "public/post_favorites/post_favorite", post: post %>
+                  <% unless current_user.email == "guest@example.com" %>
+                    <%= render "public/post_favorites/post_favorite", post: post %>
+                  <% end %>
                 </td>
                 <td id='comment_counter'>
                   <%= render 'public/comments/counter', post: post %>
@@ -83,7 +85,9 @@
                 </tr>
                 <tr>
                   <td align="right" id="favorite_buttons_<%= post.id %>">
-                    <%= render "public/post_favorites/post_favorite", post: post %>
+                    <% unless current_user.email == "guest@example.com" %>
+                      <%= render "public/post_favorites/post_favorite", post: post %>
+                    <% end %>
                   </td>
                   <td id='comment_counter'>
                     <%= render 'public/comments/counter', post: post %>
