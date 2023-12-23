@@ -13,9 +13,9 @@ class Public::CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.js # 成功時の処理
+        format.js
       else
-        format.js { render 'create_error' } # 失敗時の処理
+        format.js { render 'create_error' }
       end
     end
   end

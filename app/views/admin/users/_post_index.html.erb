@@ -7,8 +7,17 @@
       </tr>
       <tr>
         <td style="border-top: none;"></td>
-        <td style="border-top: none;"><%= post.body %></td>
+        <td style="border-top: none;">
+          <% image = post.get_image(100, 100) %>
+              <% if image.present? %>
+                <%= image_tag image %><br>
+                <%= post.body %>
+              <% else %>
+                  <%= post.body %>
+              <% end %>
+        </td>
       </tr>
       <% end %>
   </tbody>
 </table>
+<%= paginate posts %>
