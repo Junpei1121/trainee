@@ -1,4 +1,4 @@
-const opt = {
+const swiper = new Swiper('.swiper', {
   loop: true, 
   pagination: { 
     el: '.swiper-pagination', 
@@ -7,9 +7,6 @@ const opt = {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   }
-}
-
-// Swiperを実行(初期化)
-$(document).on('turbolinks:load', function() {
-    let swiper = new Swiper('.swiper',opt);
 });
+
+
