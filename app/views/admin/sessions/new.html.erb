@@ -2,6 +2,9 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto my-5">
       <h2>管理者ログイン</h2>
+      <% flash.each do |type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{type == 'notice' ? 'success' : 'danger'}") %>
+      <% end %>
       
       <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">

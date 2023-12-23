@@ -1,0 +1,3 @@
+<% if @comment.errors.any? %>
+  $('.comment-errors').html('<%= j render("public/shared/error_messages", resource: @comment) %>');
+<% end %>

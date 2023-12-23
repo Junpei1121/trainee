@@ -5,7 +5,7 @@
        <% if @user.errors.any? %>
         <div class="alert alert-danger" role="alert">
           <% @user.errors.full_messages.each do |message| %>
-            <p><%= message %></p>
+            <p><%= message.gsub("Name", "ユーザー名") %></p>
           <% end %>
         </div>
       <% end %>
@@ -14,12 +14,12 @@
         <table>
           <tbody>
             <tr>
-              <td class="p-1">氏名</td>
+              <td class="p-1">ユーザー名</td>
               <td class="p-1"><%= f.text_field :name %></td>
             </tr>
             <tr>
               <td class="p-1">メールアドレス</td>
-              <td class="p-1"><%= f.text_field :email %></td>
+              <td class="p-1"><%=@user.email %></td>
             </tr>
             <tr>
               <td class="p-1">会員ステータス</td>

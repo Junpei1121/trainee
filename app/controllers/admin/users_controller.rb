@@ -2,13 +2,12 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @users = User.all
-    # page(params[:page]).per(10)
+    @users = User.page(params[:page]).per(10).where.not(email: "guest@example.com")
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).per(10)
   end
 
   def edit
@@ -18,7 +17,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:admin_customer] = "更新成功"
+      flash[:admin_user] = "更新成功"
       redirect_to admin_user_path(@user)
     else
       render :edit

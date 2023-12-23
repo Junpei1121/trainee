@@ -1,0 +1,14 @@
+<%logger.debug @workout_posts.inspect%>
+<% workout_posts = workout_posts.includes(:tags) %>
+
+<%= month_calendar events: workout_posts do |date, posts| %>
+  <%= date.day %>
+  <% has_post = posts.present? %>
+  <% if has_post %>
+    <div>
+      <%= link_to posts.first do %>
+        <i class="fa-solid fa-dumbbell"></i>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

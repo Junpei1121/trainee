@@ -1,21 +1,56 @@
 <div class="container">
   <div class="row">
-    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 mt-3'>
        <% if flash[:withdraw] %>
         <div class="alert alert-success my-3">
           <%= flash[:withdraw] %>
         </div>
         <% end %>
-      <%= image_tag 'nagano_cake_logo.png', size: '300x300' %>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+             <%= image_tag 'one-arm-push-up.jpg',class:"top" %>
+             <p class="top-content">
+               このサイトは筋トレ好きの人のためのサイトです。<br>
+               ゲストログインすることによって、投稿を見ることはできますが、<br>
+               投稿やいいね、コメントに関しては会員登録が必要となります。
+             </p>
+          </div>
+          <div class="swiper-slide">
+             <%= image_tag 'weight-lifting-man.jpg',class:"top" %>
+             <p class="top-content">
+               タグ付け機能でタグをWorkoutとするとマイページのカレンダーにダンベルのマークが記録される。<br>
+               自分がどれだけ筋トレしたかが一目でわかる！
+             </p>
+          </div>
+          <div class="swiper-slide">
+             <%= image_tag 'woman-lifts-free-weights.jpg',class:"top" %>
+             <p class="top-content">
+               その日に投稿し忘れても筋トレtimeに筋トレをした日を入力すればカレンダーに反映
+             </p>
+          </div>
+          <div class="swiper-slide">
+             <%= image_tag 'arm-workout.jpg',class:"top" %>
+             <p class="top-content">
+               継続してかっこいい体、自分のなりたい体になりましょう！
+             </p>
+          </div>
+        </div>
+        <!-- ページネーションの要素 -->
+        <div class="swiper-pagination"></div>
+        <!-- ナビゲーションボタン （前、次） -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
       <div class="btn-wrapper col-10 mx-auto">
-        <div class="row">
-          <%= link_to '新規登録',new_user_registration_path, class: "btn btn-success btn-sm btn-block mb-3 sign_up" %>
+        <div class="row mt-3">
+          <%= link_to '新規登録',new_user_registration_path, class: "btn btn-success btn-sm btn-block mb-3 sign_up text-white" %>
         </div>
         <div class="row">
-          <%= link_to 'ログイン',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+          <%= link_to 'ログイン',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in text-white" %>
         </div>
         <div class="row">
-          <%= link_to 'ゲストログイン(閲覧用)',users_guest_sign_in_path,method: :post, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+          <%= link_to 'ゲストログイン(閲覧用)',users_guest_sign_in_path,method: :post, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in text-white" %>
         </div>
       </div>
     </div>

@@ -10,6 +10,107 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
+ 
+
+
+
+
+// ページネーションに関するCSS
+ ul.pagination li a {
+  border: none;
+  color: #696969;
+}
+
+/* アクティブなページのリンクに適用 */
+ul.pagination li.active a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+/* ホバー時のリンクに適用 */
+ul.pagination li a:hover {
+  border-radius: 15px;
+}
+
+/* ページネーションを中央に配置 */
+ul.pagination {
+  justify-content: center;
+}
+
+
+.new_post_mark {
+  position: fixed;
+  bottom: 70px;
+  right: 50px;
+  z-index: 999;
+}
+
+ a {
+  color: #000000 !important;
+  text-decoration: none !important;
+  font-weight: bold;
+}
+
+body {
+  background-color :#d4d9df !important;
+}
+
+.swiper-slide img {
+  /* 画像を全画面に広げる */
+  width: 600px !important; /* 画面幅いっぱい */
+  height: 400px !important; /* 画面高さいっぱい */
+  object-fit: cover !important; /* 画像を拡大縮小して表示（アスペクト比を保ったまま） */
+}
+
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
+}
+
+.top {
+  opacity: 0.5;
+  position: relative;
+}
+
+.top-content {
+  position: absolute;
+  top: 215px;
+  left: 50%;
+  width: 500px;
+  color: #000000;
+  transform: translate(-50%,-50%);
+  line-height: 40px;
+  font-size: 20px;
+}
+
+.simple-calendar {
+ .day {}
+ .wday-0 {}
+ .wday-1 {}
+ .wday-2 {}
+ .wday-3 {}
+ .wday-4 {}
+ .wday-5 {}
+ .wday-6 {}
+ .past {}
+ .future {}
+ .start-date {}
+ .prev-month {}
+ .next-month { }
+ .current-month {}
+ .has-events {
+   background: #98fb98;
+ }
+ .today {
+   background-color: #fff799;
+ }
+}
+
+div{
+  font-family: 'Zen Kurenaido', sans-serif;
+  font-family: 'Zen Old Mincho', serif;
+}

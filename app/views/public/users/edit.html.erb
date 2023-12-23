@@ -5,7 +5,7 @@
       <% if @user.errors.any? %>
         <div class="alert alert-danger my-3" role="alert">
           <% @user.errors.full_messages.each do |message| %>
-            <p><%= message %></p>
+            <p><%= message.gsub("Name", "ユーザー名") %></p>
           <% end %>
         </div>
       <% end %>
@@ -26,7 +26,7 @@
         </div>
         <div class="form-group my-3">
           <%= f.submit '更新',class: 'btn btn-info' %>
-          <%= link_to "退会する", withdraw_confirm_users_path, class: "btn btn-danger ml-5" %>
+          <%= link_to "退会", withdraw_confirm_users_path, class: "btn btn-danger ml-5 text-white" %>
         </div>
         
     <% end %>

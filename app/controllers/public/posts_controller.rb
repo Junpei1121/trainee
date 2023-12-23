@@ -10,7 +10,7 @@ class Public::PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(10).order(created_at: :desc)
     @tag_list = Tag.all
   end
 
@@ -58,15 +58,15 @@ class Public::PostsController < ApplicationController
   
 
   def search_tag
-    @tag_list = Tag.all
+    @tag_list = Tag.page(params[:page]).per(10)
     @tag = Tag.find(params[:tag_id])
-    @posts = @tag.posts
+    @posts = @tag.posts.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:body, :image)
+    params.require(:post).permit(:body, :image, :start_time)
   end
 
   def ensure_correct_user
