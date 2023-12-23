@@ -60,10 +60,9 @@ body {
 }
 
 .swiper-slide img {
-  /* 画像を全画面に広げる */
-  width: 600px !important; /* 画面幅いっぱい */
-  height: 400px !important; /* 画面高さいっぱい */
-  object-fit: cover !important; /* 画像を拡大縮小して表示（アスペクト比を保ったまま） */
+  width: 600px !important;
+  height: 400px !important;
+  object-fit: cover !important;
 }
 
 :root {
