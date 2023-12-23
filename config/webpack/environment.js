@@ -6,7 +6,7 @@ environment.plugins.prepend(
   new webpack.ProvidePlugin({
     $: 'jquery/src/jquery',
     jQuery: 'jquery/src/jquery',
-    Swiper: 'swiper/swiper-bundle'
+    Popper: 'popper.js'
   })
 )
 
