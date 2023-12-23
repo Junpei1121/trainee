@@ -72,6 +72,7 @@
   <% if current_user.email != "guest@example.com" %>
   <div class='row'>
     <div class='col-md-8 offset-md-1 my-3' id='comment_form'>
+      <div class="comment-errors"></div>
       <%= render 'public/comments/form', post: @post,comment: @comment %>
     </div>
   </div>
