@@ -10,9 +10,17 @@
                 <%= link_to user_path(user) do %>
                 <%= image_tag user.get_profile_image(50,50) %>
                 <% end %>
+                <%= link_to user.name, user_path(user) %>
               </td>
-              <td><%= link_to user.name, user_path(user) %></td>
-              <td><%= user.introduction %></td>
+            </tr>
+            <tr>
+              <td style="border-top: none;">
+                フォロー：<%= user.followers.count %>
+                フォロワー：<%= user.followeds.count %>
+              </td>
+            </tr>
+            <tr>
+              <td style="border-top: none;"><%= user.introduction %></td>
             </tr>
           <% end %>
         </tbody>
