@@ -2,8 +2,8 @@
   <%= link_to post_post_favorite_path(post), method: :delete,remote: true, data: {"turbolinks" => false} do %>
     <i class="fa-solid fa-star" style="color: orange;"></i><%= post.post_favorites.count %>
   <% end %>
-  <% else %>
-    <%= link_to post_post_favorite_path(post), method: :post,remote: true, data: {"turbolinks" => false} do %>
-      <i class="fa-regular fa-star" style="color: orange;" ></i><%= post.post_favorites.count %>
-    <% end %>
+<% else %>
+  <%= link_to post_post_favorite_path(post), method: :post,remote: true, data: {"turbolinks" => false} do %>
+    <i class="fa-regular fa-star" style="color: orange;" ></i><%= post.post_favorites.count %>
+  <% end %>
 <% end %>

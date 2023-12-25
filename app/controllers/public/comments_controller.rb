@@ -3,7 +3,7 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post = @post
-
+    #非同期でコメント機能実装のためエラーメッセージ表示のための設定
     respond_to do |format|
       if @comment.save
         format.js

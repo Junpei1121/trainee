@@ -9,7 +9,6 @@
           <% end %>
         </div>
       <% end %>
-      
       <h5 class="my-3">ユーザー編集</h5>
       <%= form_with model: @user, local:true do |f| %>
         <div class="form-group">
@@ -28,8 +27,7 @@
           <%= f.submit '更新',class: 'btn btn-info' %>
           <%= link_to "退会", withdraw_confirm_users_path, class: "btn btn-danger ml-5 text-white" %>
         </div>
-        
-    <% end %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,6 +1,5 @@
 <%logger.debug @workout_posts.inspect%>
 <% workout_posts = workout_posts.includes(:tags) %>
-
 <%= month_calendar events: workout_posts do |date, posts| %>
   <%= date.day %>
   <% has_post = posts.present? %>

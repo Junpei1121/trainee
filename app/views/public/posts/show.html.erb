@@ -1,19 +1,19 @@
 <div class='container'>
   <div class='row'>
-     <div class='col-md-8 offset-md-1 my-3'>
-       <h5>投稿詳細</h5>
-       <% if flash[:post_update] %>
-         <div class="alert alert-success my-3">
-           <%= flash[:post_update] %>
-       <% end %>
-       <% if @comment.errors.any? %>
+    <div class='col-md-8 offset-md-1 my-3'>
+      <h5>投稿詳細</h5>
+      <% if flash[:post_update] %>
+        <div class="alert alert-success my-3">
+          <%= flash[:post_update] %>
+        </div>
+      <% end %>
+      <% if @comment.errors.any? %>
         <div class="alert alert-danger my-3" role="alert">
           <% @comment.errors.full_messages.each do |message| %>
             <p><%= message.gsub("Comment", "コメント") %></p>
           <% end %>
         </div>
       <% end %>
-      </div>
         <table class='table table-hover table-inverse'>
           <tbody>
               <tr>
@@ -67,8 +67,8 @@
               <%end%>
           </tbody>
         </table>
-      </div>
-  </div>
+    </div>
+    </div>
   <% if current_user.email != "guest@example.com" %>
   <div class='row'>
     <div class='col-md-8 offset-md-1 my-3' id='comment_form'>
@@ -82,4 +82,4 @@
       <%= render 'public/comments/index', post: @post %>
     </div>
   </div>
-</div>
+  </div>
