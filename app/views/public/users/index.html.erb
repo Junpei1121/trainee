@@ -14,6 +14,12 @@
               </td>
             </tr>
             <tr>
+              <td style="border-top: none;">
+                フォロー：<%= user.followers.count %>
+                フォロワー：<%= user.followeds.count %>
+              </td>
+            </tr>
+            <tr>
               <td style="border-top: none;"><%= user.introduction %></td>
             </tr>
           <% end %>
