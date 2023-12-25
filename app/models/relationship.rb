@@ -6,6 +6,7 @@ class Relationship < ApplicationRecord
 
   after_create_commit :create_notifications
 
+#通知機能についての記述
   private
   def create_notifications
     Notification.create(subject: self, user: followed, action_type: :followed_me)

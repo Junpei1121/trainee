@@ -2,13 +2,13 @@
   <div class='row'>
     <div class='col-md-8'>
       <h5 class='my-3'><%= @user.name %>さんのいいねしている投稿</h5>
-      <%if @post_favorite_posts.blank?%>
+      <% if @post_favorite_posts.blank? %>
         <div class="d-flex justify-content-center mt-5">
           <h5>いいねしている投稿はありません</h5>
         </div>
-      <%else%>
+      <% else %>
         <%= render 'public/posts/index',posts: @post_favorite_posts %>
-      <%end%>
+      <% end %>
     </div>
   </div>
 </div>

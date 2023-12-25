@@ -60,6 +60,7 @@
           </tbody>
         </table>
         <%= paginate @posts %>
+        
       <% else %>
         <h5>タグに「<%= @word %>」が含まれる検索結果（全<%= @posts.count %>件）</h5>
         <table class='table table-hover table-inverse'>

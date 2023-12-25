@@ -15,23 +15,23 @@
       <tr>
         <td style="border-top: none;"></td>
         <td style="border-top: none;">
-            <% image = post.get_image(100, 100) %>
-              <% if image.present? %>
-                <%= image_tag image %><br>
-                <%= link_to(post_path(post)) do %>
-                  <%= post.body %>
-                <% end %>
-              <% else %>
-                <%= link_to(post_path(post)) do %>
-                  <%= post.body %>
-                <% end %>
+          <% image = post.get_image(100, 100) %>
+            <% if image.present? %>
+              <%= image_tag image %><br>
+              <%= link_to(post_path(post)) do %>
+                <%= post.body %>
               <% end %>
+            <% else %>
+              <%= link_to(post_path(post)) do %>
+                <%= post.body %>
+              <% end %>
+            <% end %>
         </td>
       </tr>
       <tr>
         <td align="right" style="border-top: none;" id="favorite_buttons_<%= post.id %>"　>
           <% unless current_user.email == "guest@example.com" %>
-          <%= render "public/post_favorites/post_favorite", post: post %>
+            <%= render "public/post_favorites/post_favorite", post: post %>
           <% end %>
         </td>
         <td id='comment_counter' style="border-top: none;">

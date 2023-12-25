@@ -14,7 +14,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
 
 
 @import "~bootstrap/scss/bootstrap";
@@ -112,4 +112,44 @@ body {
 div{
   font-family: 'Zen Kurenaido', sans-serif;
   font-family: 'Zen Old Mincho', serif;
+}
+
+@media screen and (max-width: 992px) {
+  .new_post_mark .fa-circle-plus {
+    font-size: 3rem !important; 
+  }
+}
+
+@media (max-width: 576px) {
+  .swiper-slide img {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .top-content {
+    width: 90%;
+    font-size: 15px;
+    line-height: 30px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 577px) {
+  .swiper-slide img {
+    width: 600px !important;
+    height: 400px !important;
+  }
+  .top-content {
+    position: absolute;
+    top: 215px;
+    left: 50%;
+    width: 500px;
+    color: #000000;
+    transform: translate(-50%, -50%);
+    line-height: 40px;
+    font-size: 20px;
+    text-align: left;
+  }
 }

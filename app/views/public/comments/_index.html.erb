@@ -10,9 +10,11 @@
         <td><%= link_to (comment.user.name),user_path(comment.user) %></td>
         <td><%= comment.comment %><%= comment.created_at.strftime('%Y/%m/%d/%R') %></td>
         <% if comment.user == current_user %>
-          <td><%= link_to "削除", post_comment_path(comment.post, comment), method: :delete,
-          data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger mr-3 my-auto text-white", 
-          remote: true,data: {"turbolinks" => false} %></td>
+          <td>
+            <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete,
+            data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger mr-3 my-auto text-white", 
+            remote: true,data: {"turbolinks" => false} %>
+          </td>
         <% end %>
       </tr>
     </tbody>

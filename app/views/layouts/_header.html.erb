@@ -9,10 +9,12 @@
        <%= image_tag 'trainee.png',size: '110x75' %>
       <% end %>
     <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav" style="justify-content:flex-end;margin:0 30px">
+    <% if admin_signed_in? || user_signed_in?%>
+      <button class="navbar-toggler" style="background-color :#C0C0C0;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="background-color :#C0C0C0;"></span>
+      </button>
+    <% end %>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown" style="justify-content:flex-end;margin:0 30px">
       <div>
         <div class="row">
           <ul class="navbar-nav ml-auto">

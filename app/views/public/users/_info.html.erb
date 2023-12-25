@@ -3,7 +3,7 @@
 <u><%= user.name %></u>
 <p class='mt-3'>自己紹介</p>
 <u><%= user.introduction %></u>
- <table class='table table-hover table-inverse'>
+  <table class='table table-hover table-inverse'>
     <tbody>
       <tr>
         <td style="border-top: none;" align="center">フォロー</td>
@@ -12,12 +12,12 @@
       <tr>
         <td style="border-top: none;" align="center">
           <%= link_to follows_user_path(user) do %>
-          <h6><%= user.followers.count %></h6>
+            <h6><%= user.followers.count %></h6>
           <% end %>
         </td>
         <td style="border-top: none;" align="center">
           <%= link_to followers_user_path(user) do %>
-          <h6><%= user.followeds.count %></h6>
+            <h6><%= user.followeds.count %></h6>
           <% end %>
         </td>
       </tr>
@@ -25,19 +25,19 @@
   </table>
     <%= link_to favorites_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
       <i class="fa-regular fa-star"></i>
-  <% end %>
-  <div class='row my-3'>
-    <% if current_user != user && current_user.email != "guest@example.com" %>
-      <% if current_user.following?(user) %>
-        <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-danger btn-block text-white" %>
-      <% else %>
-        <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success btn-block text-white" %>
-      <% end %>
     <% end %>
-    <% if current_user == user && user.email != "guest@example.com"%>
-      <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
-        <i class="fas fa-user-cog"></i>
+    <div class='row my-3'>
+      <% if current_user != user && current_user.email != "guest@example.com" %>
+        <% if current_user.following?(user) %>
+          <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-danger btn-block text-white" %>
+        <% else %>
+          <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success btn-block text-white" %>
+        <% end %>
       <% end %>
-    <%= render 'public/posts/calender',workout_posts: @workout_posts %>
-  <% end %>
-  </div>
+      <% if current_user == user && user.email != "guest@example.com"%>
+        <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+        <%= render 'public/posts/calender',workout_posts: @workout_posts %>
+      <% end %>
+    </div>
