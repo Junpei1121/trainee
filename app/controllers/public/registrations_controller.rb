@@ -37,11 +37,12 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-
+  #新規登録後の遷移先の設定
   def after_sign_up_path_for(resource)
     user_path(current_user)
   end
-
+　
+　#ログアウト後の遷移先の設定
   def after_sign_out_path_for(resource_or_scope)
     root_path
   end

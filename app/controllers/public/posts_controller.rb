@@ -55,8 +55,7 @@ class Public::PostsController < ApplicationController
     end
   end
 
-  
-
+　#タグを押下したとき遷移されるview
   def search_tag
     @tag_list = Tag.page(params[:page]).per(10)
     @tag = Tag.find(params[:tag_id])

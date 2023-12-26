@@ -41,7 +41,7 @@ ul.pagination {
   justify-content: center;
 }
 
-
+// 新規投稿ボタン
 .new_post_mark {
   position: fixed;
   bottom: 70px;
@@ -59,6 +59,7 @@ body {
   background-color :#d4d9df !important;
 }
 
+// TOPページのswiper
 .swiper-slide img {
   width: 600px !important;
   height: 400px !important;
@@ -86,6 +87,7 @@ body {
   font-size: 20px;
 }
 
+// カレンダー
 .simple-calendar {
  .day {}
  .wday-0 {}
@@ -109,17 +111,21 @@ body {
  }
 }
 
+// サイト全体のフォント
 div{
   font-family: 'Zen Kurenaido', sans-serif;
   font-family: 'Zen Old Mincho', serif;
 }
 
+// レスポンシブ対応
+// 新規投稿ボタン
 @media screen and (max-width: 992px) {
   .new_post_mark .fa-circle-plus {
     font-size: 3rem !important; 
   }
 }
 
+// TOPページのswiper
 @media (max-width: 576px) {
   .swiper-slide img {
     width: 100% !important;
