@@ -1,6 +1,6 @@
 <div class='container'>
   <div class='row'>
-     <div class='col-md-3 my-3'>
+     <div class='col-md-4 my-3'>
        <h5><%= @user.name%>さんの詳細ページ</h5>
        <% if flash[:admin_user] %>
           <div class="alert alert-success">
@@ -9,7 +9,7 @@
        <% end %>
        <%= render 'info', user: @user %>
      </div>
-     <div class='col-md-8 offset-md-1 my-3'>
+     <div class='col-md-7 offset-md-1 my-3'>
          <%= render 'admin/users/post_index',posts: @posts %>
      </div>
   </div>

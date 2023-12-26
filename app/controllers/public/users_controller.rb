@@ -25,6 +25,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
+    #ゲストログインのユーザー以外表示
     users = User.where(is_active: true).where.not(email: "guest@example.com")
     @users = users.page(params[:page]).per(10)
   end
