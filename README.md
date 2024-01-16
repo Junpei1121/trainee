@@ -34,7 +34,13 @@ https://app.diagrams.net/#G1rCbcJymJY2BKW61qLI-5iKlyMjKgUpPT
   
 ・ER図  
 https://app.diagrams.net/#G19B4DNa67ImdGUQFRliqKZ3FnFDGl2OV1  
-​
+  
+・AWS構成図  
+https://app.diagrams.net/#G1ANPAYpKKT7xwNfVucQvtSktNAtDyE_lP  
+  
+・インフラ設計書  
+https://docs.google.com/spreadsheets/d/16E19Z0A6YdkYAiBTjQN2t_M-akrBiIom0x9PJRryazk/edit#gid=0  
+​ 
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
