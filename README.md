@@ -42,7 +42,7 @@ https://app.diagrams.net/#G1ANPAYpKKT7xwNfVucQvtSktNAtDyE_lP
 https://docs.google.com/spreadsheets/d/16E19Z0A6YdkYAiBTjQN2t_M-akrBiIom0x9PJRryazk/edit#gid=0  
 ​ 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux2(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
