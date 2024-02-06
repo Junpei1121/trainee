@@ -15,13 +15,11 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
     @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   def update
-    @post = Post.find(params[:id])
-    @tag_list=params[:post][:name].split(',')
+    @tag_list = params[:post][:name].split(',')
     if @post.update(post_params)
       @post.save_tags(@tag_list)
       flash[:post_update] = "投稿更新に成功しました"
@@ -32,7 +30,6 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_path(current_user)
   end
@@ -60,7 +57,7 @@ class Public::PostsController < ApplicationController
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.page(params[:page]).per(10).order(created_at: :desc)
   end
-
+  
   private
 
   def post_params

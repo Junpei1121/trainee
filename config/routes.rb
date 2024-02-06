@@ -34,6 +34,7 @@ scope module: :public do
     member do
       get :favorites
       get :follows, :followers
+      get :timelines
     end
     resource :relationships, only: [:create, :destroy]
     end

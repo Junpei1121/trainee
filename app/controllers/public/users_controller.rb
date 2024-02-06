@@ -56,6 +56,11 @@ class Public::UsersController < ApplicationController
     @users = @user.follower_users.page(params[:page]).per(10)
   end
   
+  def timelines
+    @user = User.find(params[:id])
+    @posts = Post.where(user_id: [current_user.id, *current_user.following_users]).page(params[:page]).per(10).order(created_at: :desc)
+  end
+  
   private
 
   def user_params
